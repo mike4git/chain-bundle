@@ -1,7 +1,7 @@
 # chain-bundle
 This bundle offers a generic way of creating a chain of (potentially responsible) handlers which delegate or finish the task. 
 
-May be you have already heard about the [Chain of Repsonability Pattern](https://en.wikipedia.org/wiki/Chain-of-responsibility_pattern)?!
+May be you have already heard about the [Chain of Responsability Pattern](https://en.wikipedia.org/wiki/Chain-of-responsibility_pattern)?!
 
 If you think you can handle that with Symfony Events, do so.
 If you think you can use Messenger-Middleware-Stack instead, of course - feel free.
