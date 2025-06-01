@@ -1,0 +1,83 @@
+{
+  "name": "mike4git/chain-bundle",
+  "description": "This bundle offers a generic way of creating a chain of (potentially responsible) handlers which delegate or finish the task.",
+  "license": "MIT",
+  "type": "symfony-bundle",
+  "authors": [
+    {
+      "name": "Michael Albrecht",
+      "email": "m.albrecht@neusta.de",
+      "homepage": "https://www.michael-albrecht.de/",
+      "role": "Maintainer"
+    }
+  ],
+  "require": {
+    "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
+    "symfony/config": "^6.4 || ^7.2",
+    "symfony/dependency-injection": "^6.4 || ^7.2",
+    "symfony/framework-bundle": "^6.4 || ^7.2",
+    "symfony/http-kernel": "^6.4 || ^7.2",
+    "symfony/property-access": "^6.4 || ^7.2"
+  },
+  "require-dev": {
+    "ergebnis/composer-normalize": "^2.42",
+    "friendsofphp/php-cs-fixer": "^3.60",
+    "jangregor/phpstan-prophecy": "^2.1",
+    "matthiasnoback/symfony-dependency-injection-test": "^5.1",
+    "nyholm/symfony-bundle-test": "^3.0",
+    "phpspec/prophecy-phpunit": "^2.0",
+    "phpstan/extension-installer": "^1.4",
+    "phpstan/phpstan": "^2.1.6",
+    "phpstan/phpstan-symfony": "^2.0",
+    "phpunit/phpunit": "^9.5",
+    "qossmic/deptrac-shim": "^0.24 || ^1.0",
+    "symfony/filesystem": "^6.4 || ^7.2",
+    "symfony/phpunit-bridge": "^6.4 || ^7.2",
+    "symfony/test-pack": "^1.0",
+    "symfony/yaml": "^6.4 || ^7.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "Mike4Git\\ChainBundle\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Mike4Git\\ChainBundle\\Tests\\": "tests/"
+    },
+    "classmap": [
+      "tests/app/TestKernel.php"
+    ]
+  },
+  "config": {
+    "allow-plugins": {
+      "ergebnis/composer-normalize": true,
+      "phpstan/extension-installer": true
+    },
+    "sort-packages": true
+  },
+  "scripts": {
+    "cs:check": "@cs:fix --dry-run",
+    "cs:check:ci": "@cs:check --format=checkstyle",
+    "cs:fix": "php-cs-fixer fix --ansi --verbose --diff",
+    "deptrac:analyse": "deptrac --config-file=depfile.yaml",
+    "deptrac:analyse:visual": "deptrac --formatter=graphviz-html --output=deptrac.analyse-result.html --config-file=depfile.yaml",
+    "phpstan": "phpstan analyse --ansi",
+    "phpstan:ci": "phpstan analyse --ansi --no-interaction --no-progress --error-format=github",
+    "tests": "phpunit",
+    "tests:coverage:ci": "phpunit --teamcity --coverage-cobertura .coverage/cobertura.xml",
+    "yaml:lint": "yaml-lint config tests/Fixtures/Config"
+  },
+  "scripts-descriptions": {
+    "cs:check": "Checks code style (but doesn't fix anything)",
+    "cs:check:ci": "Checks code style and creates output in GitHub format",
+    "cs:fix": "Checks and fixes code style",
+    "deptrac:analyse": "Analyses your dependencies and follows the pre-defined rules and layers",
+    "deptrac:analyse:visual": "Visualizes your dependencies and follows the pre-defined rules and layers",
+    "phpstan": "Checks for code smells",
+    "phpstan:ci": "Checks for code smells and creates output in GitHub format",
+    "tests": "Runs all phpunit tests",
+    "tests:coverage:ci": "Runs all phpunit tests and creates coverage reports",
+    "yaml:lint": "Lints Symfony YAML config files"
+  }
+}

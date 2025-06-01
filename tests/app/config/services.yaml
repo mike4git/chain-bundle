@@ -1,0 +1,15 @@
+services:
+  Mike4Git\ChainBundle\Registry\ChainRegistry:
+    public: true
+    arguments: []
+    tags: []
+    alias: 'mike4git.chain.registry'
+
+  Mike4Git\ChainBundle\Executor\ChainExecutor:
+    arguments:
+      - '@mike4git.chain.registry'
+
+  \Handler\SampleHandler:
+    tags:
+      - { name: 'chain.handler', chain: 'example', priority: 100 }
+

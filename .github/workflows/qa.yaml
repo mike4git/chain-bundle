@@ -1,0 +1,50 @@
+name: Quality Assurance
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qa:
+    name: Quality Checks
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@v4
+
+      - name: PHP Setup
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.4
+          coverage: none
+          tools: cs2pr
+
+      - name: Validate composer.json
+        run: composer validate --ansi --strict
+
+      - name: Install dependencies
+        uses: ramsey/composer-install@v3
+
+      - name: Run ergebnis/composer-normalize
+        run: composer normalize --ansi --dry-run
+
+      - name: Check CS-Fixer
+        run: PHP_CS_FIXER_IGNORE_ENV="true" composer cs:check:ci | cs2pr
+
+      - name: Check PHPStan
+        run: |
+          php tests/app/bin/console cache:clear
+          composer phpstan:ci
+
+      - name: Check Deptrac
+        run: composer deptrac:analyse
+
+      - name: Check Symfony YAML Config
+        run: composer yaml:lint
