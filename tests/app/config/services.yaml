@@ -9,5 +9,26 @@ services:
 
   Mike4Git\ChainBundle\Tests\Handler\SampleHandler:
     tags:
-      - { name: 'chain.handler', chain: 'example', priority: 100 }
+      - { name: 'chain.handler', chain: 'sample', priority: 100 }
+    public: true
+
+  ##### FizzBuzz Example #####
+  Mike4Git\ChainBundle\Tests\FizzBuzz\FizzHandler:
+    tags:
+      - { name: 'chain.handler', chain: 'fizzbuzz', priority: 100 }
+    public: true
+
+  Mike4Git\ChainBundle\Tests\FizzBuzz\BuzzHandler:
+    tags:
+      - { name: 'chain.handler', chain: 'fizzbuzz', priority: 100 }
+    public: true
+
+  Mike4Git\ChainBundle\Tests\FizzBuzz\FizzBuzzHandler:
+    tags:
+      - { name: 'chain.handler', chain: 'fizzbuzz', priority: 200 }
+    public: true
+
+  Mike4Git\ChainBundle\Tests\FizzBuzz\DefaultHandler:
+    tags:
+      - { name: 'chain.handler', chain: 'fizzbuzz', priority: 10 }
     public: true

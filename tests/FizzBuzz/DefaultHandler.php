@@ -1,0 +1,22 @@
+<?php declare(strict_types=1);
+
+namespace Mike4Git\ChainBundle\Tests\FizzBuzz;
+
+use Mike4Git\ChainBundle\Handler\ChainHandlerInterface;
+use Mike4Git\ChainBundle\Handler\Context\ChainHandlerContext;
+
+/**
+ * @implements ChainHandlerInterface<FizzBuzzContext>
+ */
+class DefaultHandler implements ChainHandlerInterface
+{
+    public function supports(ChainHandlerContext $context): bool
+    {
+        return isset($context->number) && \is_int($context->number);
+    }
+
+    public function handle(ChainHandlerContext $context): ChainHandlerContext
+    {
+        return $context; // nothing has to be done here
+    }
+}

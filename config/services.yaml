@@ -3,11 +3,10 @@ services:
     autowire: true
     autoconfigure: true
 
-  mike4git.chain.registry:
-    class: Mike4Git\ChainBundle\Registry\ChainRegistry
+  Mike4Git\ChainBundle\Registry\ChainHandlerRegistry:
     public: true
 
   Mike4Git\ChainBundle\Executor\ChainExecutor:
     arguments:
-      - '@mike4git.chain.registry'
+      $registry: '@Mike4Git\ChainBundle\Registry\ChainHandlerRegistry'
     public: true

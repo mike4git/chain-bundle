@@ -18,7 +18,7 @@ class ChainExecutorIntegrationTest extends KernelTestCase
 
         /** @var ChainExecutor $executor */
         $executor = $container->get(ChainExecutor::class);
-        $result = $executor->process('example', new SampleContext('handle kernel test'));
+        $result = $executor->execute('sample', new SampleContext('handle kernel test'));
 
         $this->assertEquals('HANDLE KERNEL TEST', $result->getValue());
     }

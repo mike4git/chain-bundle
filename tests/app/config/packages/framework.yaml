@@ -1,3 +1,5 @@
 framework:
   test: true
   secret: '%env(APP_SECRET)%'
+  property_info:
+    with_constructor_extractor: true

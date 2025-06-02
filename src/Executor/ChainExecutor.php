@@ -3,7 +3,7 @@
 namespace Mike4Git\ChainBundle\Executor;
 
 use Mike4Git\ChainBundle\Handler\Context\ChainHandlerContext;
-use Mike4Git\ChainBundle\Registry\ChainRegistry;
+use Mike4Git\ChainBundle\Registry\ChainHandlerRegistry;
 
 /**
  * @template TContext of ChainHandlerContext
@@ -11,16 +11,21 @@ use Mike4Git\ChainBundle\Registry\ChainRegistry;
 class ChainExecutor
 {
     /**
-     * @param ChainRegistry<TContext> $registry
+     * @param ChainHandlerRegistry<TContext> $registry
      */
     public function __construct(
-        private ChainRegistry $registry,
+        private readonly ChainHandlerRegistry $registry,
     ) {
     }
 
-    public function process(string $chainName, mixed $context, bool $breakOnHandle = true): mixed
+    /**
+     * @param TContext $context
+     *
+     * @return TContext
+     */
+    public function execute(string $chainName, ChainHandlerContext $context, bool $breakOnHandle = true): ChainHandlerContext
     {
-        $handlers = $this->registry->getHandlers($chainName);
+        $handlers = $this->registry->getHandlersForChain($chainName);
 
         foreach ($handlers as $handler) {
             if ($handler->supports($context)) {

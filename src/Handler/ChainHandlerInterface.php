@@ -11,5 +11,10 @@ interface ChainHandlerInterface
 {
     public function supports(ChainHandlerContext $context): bool;
 
+    /**
+     * @param TContext $context
+     *
+     * @return TContext
+     */
     public function handle(ChainHandlerContext $context): ChainHandlerContext;
 }
