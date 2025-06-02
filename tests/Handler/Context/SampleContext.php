@@ -23,5 +23,4 @@ class SampleContext implements ChainHandlerContext
     {
         $this->value = $value;
     }
-
 }

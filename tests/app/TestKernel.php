@@ -2,26 +2,28 @@
 
 declare(strict_types=1);
 
-use Mike4Git\ChainBundle\ChainBundle;
+namespace Mike4Git\ChainBundle\Tests\app;
 
-final class TestKernel extends Nyholm\BundleTest\TestKernel
+use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Symfony\Component\HttpKernel\Kernel as BaseKernel;
+
+final class TestKernel extends BaseKernel
 {
-    private ?string $testProjectDir = null;
+    use MicroKernelTrait;
 
-    public function __construct(string $environment, bool $debug)
+    public function registerBundles(): iterable
     {
-        parent::__construct($environment, $debug);
-
-        $this->addTestBundle(ChainBundle::class);
+        return [
+            new \Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
+            new \Mike4Git\ChainBundle\ChainBundle(),
+        ];
     }
 
-    public function getProjectDir(): string
+    protected function configureContainer(ContainerConfigurator $container): void
     {
-        return $this->testProjectDir ?? __DIR__;
-    }
-
-    public function setTestProjectDir($projectDir): void
-    {
-        $this->testProjectDir = $projectDir;
+        $container->import(__DIR__ . '/config/packages/*.yaml');
+        $container->import(__DIR__ . '/config/packages/{env}/*.yaml'); // falls du env-spezifisch arbeitest
+        $container->import(__DIR__ . '/config/services.yaml');
     }
 }

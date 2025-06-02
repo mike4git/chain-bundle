@@ -1,9 +1,9 @@
 #!/usr/bin/env php
 <?php
 
+use Mike4Git\ChainBundle\Tests\app\TestKernel;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\ArgvInput;
-use Symfony\Component\ErrorHandler\Debug;
 
 set_time_limit(0);
 

@@ -1,0 +1,13 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  mike4git.chain.registry:
+    class: Mike4Git\ChainBundle\Registry\ChainRegistry
+    public: true
+
+  Mike4Git\ChainBundle\Executor\ChainExecutor:
+    arguments:
+      - '@mike4git.chain.registry'
+    public: true

@@ -1,15 +1,13 @@
+imports:
+  - { resource: ../../../config/services.yaml }
+
 services:
-  Mike4Git\ChainBundle\Registry\ChainRegistry:
+  _defaults:
+    autowire: true
+    autoconfigure: true
     public: true
-    arguments: []
-    tags: []
-    alias: 'mike4git.chain.registry'
 
-  Mike4Git\ChainBundle\Executor\ChainExecutor:
-    arguments:
-      - '@mike4git.chain.registry'
-
-  \Handler\SampleHandler:
+  Mike4Git\ChainBundle\Tests\Handler\SampleHandler:
     tags:
       - { name: 'chain.handler', chain: 'example', priority: 100 }
-
+    public: true
