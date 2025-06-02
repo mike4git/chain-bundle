@@ -14,8 +14,7 @@ class FizzHandler implements ChainHandlerInterface
 
     public function handle(ChainHandlerContext $context): ChainHandlerContext
     {
-        $context->number = 'Fizz';
-
+        $context->result .= ' Fizz';
         return $context;
     }
 }

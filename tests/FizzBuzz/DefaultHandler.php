@@ -17,6 +17,7 @@ class DefaultHandler implements ChainHandlerInterface
 
     public function handle(ChainHandlerContext $context): ChainHandlerContext
     {
-        return $context; // nothing has to be done here
+        $context->result .= ' ' . (string) $context->number;
+        return $context;
     }
 }

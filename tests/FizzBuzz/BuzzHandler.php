@@ -14,8 +14,7 @@ class BuzzHandler implements ChainHandlerInterface
 
     public function handle(ChainHandlerContext $context): ChainHandlerContext
     {
-        $context->number = 'Buzz';
-
+        $context->result .= ' Buzz';
         return $context;
     }
 }

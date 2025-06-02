@@ -18,13 +18,13 @@ class FizzBuzzExecutorIntegrationTest extends KernelTestCase
         /** @var ChainExecutor $executor */
         $executor = $container->get(ChainExecutor::class);
 
-        $result = '';
+        $context = new FizzBuzzContext(0, '');
         for ($number = 1; $number <= 20; ++$number) {
-            $resultedContext = $executor->execute('fizzbuzz', new FizzBuzzContext((string) $number), true);
-            $result .= $resultedContext->number . ' ';
+            $context->number = $number;
+            $resultedContext = $executor->execute('fizzbuzz', $context, true);
         }
 
-        $this->assertEquals('1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz 16 17 Fizz 19 Buzz', trim($result));
+        $this->assertEquals('1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz 16 17 Fizz 19 Buzz', trim($resultedContext->result));
     }
 
     protected static function getKernelClass(): string

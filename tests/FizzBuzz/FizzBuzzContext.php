@@ -7,7 +7,8 @@ use Mike4Git\ChainBundle\Handler\Context\ChainHandlerContext;
 class FizzBuzzContext implements ChainHandlerContext
 {
     public function __construct(
-        public string $number,
+        public int $number,
+        public string $result,
     ) {
     }
 }
