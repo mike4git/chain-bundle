@@ -57,6 +57,24 @@ $processedWorkpiece = $executor->execute('Name Of The Processing Chain', $workpi
 
 That's it.
 
+### `AsChainHandler` Attribute
+
+To make declaration of chain handlers easier, you can use the `ChainHandler` attribute in your handler class:
+
+```php
+#[AsChainHandler(chain: 'sample', priority: 100)]
+class MyHandler implements ChainHandlerInterface 
+{
+   ...
+}
+```
+
+But additionally you have to register `MyHandler` as a Symfony service in your yaml file:
+
+```yaml
+App\MyHandler: ~
+```
+
 ### Example
 Let's implement a simple FizzBuzz chain using the chain-bundle.
 We want different handlers to decide if a number should be replaced with "Fizz", "Buzz", "FizzBuzz", or left as-is.

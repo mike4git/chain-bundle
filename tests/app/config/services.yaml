@@ -5,30 +5,10 @@ services:
   _defaults:
     autowire: true
     autoconfigure: true
-    public: true
+    public: false
 
-  Mike4Git\ChainBundle\Tests\Handler\SampleHandler:
-    tags:
-      - { name: 'chain.handler', chain: 'sample', priority: 100 }
-    public: true
+  Mike4Git\ChainBundle\Tests\Handler\SampleHandler: ~
 
   ##### FizzBuzz Example #####
-  Mike4Git\ChainBundle\Tests\FizzBuzz\FizzHandler:
-    tags:
-      - { name: 'chain.handler', chain: 'fizzbuzz', priority: 100 }
-    public: true
-
-  Mike4Git\ChainBundle\Tests\FizzBuzz\BuzzHandler:
-    tags:
-      - { name: 'chain.handler', chain: 'fizzbuzz', priority: 100 }
-    public: true
-
-  Mike4Git\ChainBundle\Tests\FizzBuzz\FizzBuzzHandler:
-    tags:
-      - { name: 'chain.handler', chain: 'fizzbuzz', priority: 200000 }
-    public: true
-
-  Mike4Git\ChainBundle\Tests\FizzBuzz\DefaultHandler:
-    tags:
-      - { name: 'chain.handler', chain: 'fizzbuzz', priority: 10 }
-    public: true
+  Mike4Git\ChainBundle\Tests\FizzBuzz\:
+    resource: '../../FizzBuzz/*Handler.php'

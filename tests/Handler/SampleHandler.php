@@ -2,6 +2,7 @@
 
 namespace Mike4Git\ChainBundle\Tests\Handler;
 
+use Mike4Git\ChainBundle\Attribute\AsChainHandler;
 use Mike4Git\ChainBundle\Handler\ChainHandlerInterface;
 use Mike4Git\ChainBundle\Handler\Context\ChainHandlerContext;
 use Mike4Git\ChainBundle\Tests\Handler\Context\SampleContext;
@@ -9,6 +10,7 @@ use Mike4Git\ChainBundle\Tests\Handler\Context\SampleContext;
 /**
  * @extends ChainHandlerInterface<SampleContext>
  */
+#[AsChainHandler(chain: 'sample', priority: 100)]
 class SampleHandler implements ChainHandlerInterface
 {
     /**

@@ -2,12 +2,14 @@
 
 namespace Mike4Git\ChainBundle\Tests\FizzBuzz;
 
+use Mike4Git\ChainBundle\Attribute\AsChainHandler;
 use Mike4Git\ChainBundle\Handler\ChainHandlerInterface;
 use Mike4Git\ChainBundle\Handler\Context\ChainHandlerContext;
 
 /**
  * @implements ChainHandlerInterface<FizzBuzzContext>
  */
+#[AsChainHandler(chain: 'fizzbuzz', priority: 0)]
 class DefaultHandler implements ChainHandlerInterface
 {
     public function supports(ChainHandlerContext $context): bool
