@@ -20,7 +20,7 @@ class FizzBuzzExecutorIntegrationTest extends KernelTestCase
 
         $result = '';
         for ($number = 1; $number <= 20; ++$number) {
-            $resultedContext = $executor->execute('fizzbuzz', new FizzBuzzContext((string) $number));
+            $resultedContext = $executor->execute('fizzbuzz', new FizzBuzzContext((string) $number), true);
             $result .= $resultedContext->number . ' ';
         }
 

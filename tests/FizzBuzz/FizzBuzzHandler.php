@@ -9,7 +9,7 @@ class FizzBuzzHandler implements ChainHandlerInterface
 {
     public function supports(ChainHandlerContext $context): bool
     {
-        return isset($context->number) && (0 === $context->number % 15);
+        return $context instanceof FizzBuzzContext && 0 === (int)$context->number % 15;
     }
 
     public function handle(ChainHandlerContext $context): ChainHandlerContext

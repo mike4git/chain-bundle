@@ -3,6 +3,11 @@ services:
     autowire: true
     autoconfigure: true
 
+  Mike4Git\ChainBundle\Command\ListChainsCommand:
+    tags:
+      - { name: 'console.command' }
+    public: true
+
   Mike4Git\ChainBundle\Registry\ChainHandlerRegistry:
     public: true
 

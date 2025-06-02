@@ -25,7 +25,7 @@ services:
 
   Mike4Git\ChainBundle\Tests\FizzBuzz\FizzBuzzHandler:
     tags:
-      - { name: 'chain.handler', chain: 'fizzbuzz', priority: 200 }
+      - { name: 'chain.handler', chain: 'fizzbuzz', priority: 200000 }
     public: true
 
   Mike4Git\ChainBundle\Tests\FizzBuzz\DefaultHandler:
