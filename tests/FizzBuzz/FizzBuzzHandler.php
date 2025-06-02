@@ -14,12 +14,13 @@ class FizzBuzzHandler implements ChainHandlerInterface
 {
     public function supports(ChainHandlerContext $context): bool
     {
-        return $context instanceof FizzBuzzContext && 0 === (int)$context->number % 15;
+        return $context instanceof FizzBuzzContext && 0 === (int) $context->number % 15;
     }
 
     public function handle(ChainHandlerContext $context): ChainHandlerContext
     {
         $context->result .= ' FizzBuzz';
+
         return $context;
     }
 }

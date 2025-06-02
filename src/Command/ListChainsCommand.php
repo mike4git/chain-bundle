@@ -3,8 +3,10 @@
 declare(strict_types=1);
 
 // src/Command/ListChainsCommand.php
+
 namespace Mike4Git\ChainBundle\Command;
 
+use Mike4Git\ChainBundle\Handler\Context\ChainHandlerContext;
 use Mike4Git\ChainBundle\Registry\ChainHandlerRegistry;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
@@ -18,13 +20,14 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 #[AsCommand(name: 'mike4git:chain:list', description: 'list all chains and their handlers (sortet by priority)')]
 class ListChainsCommand extends Command
 {
+    /**
+     * @param ChainHandlerRegistry<ChainHandlerContext> $registry
+     */
     public function __construct(
-        private readonly ChainHandlerRegistry $registry
-    )
-    {
+        private readonly ChainHandlerRegistry $registry,
+    ) {
         parent::__construct();
     }
-
 
     protected function configure(): void
     {
@@ -49,19 +52,21 @@ class ListChainsCommand extends Command
 
         if (empty($handlers)) {
             $io->warning('<comment>Keine Chains gefunden.</comment>');
+
             return Command::SUCCESS;
         }
 
         $filterName = $input->getOption('chain');
 
-        if ($filterName !== null) {
+        if (null !== $filterName) {
             if (!isset($handlers[$filterName])) {
                 $io->error("<error>Chain '$filterName' wurde nicht gefunden.</error>");
+
                 return Command::FAILURE;
             }
 
             $io->title("Chain: $filterName");
-            $io->writeln(sprintf('<info>Number of registered Handlers: %d</info>', count($handlers[$filterName])));
+            $io->writeln(\sprintf('<info>Number of registered Handlers: %d</info>', \count($handlers[$filterName])));
             $this->printChain($handlers[$filterName], $output);
         } else {
             foreach ($handlers as $chain => $entries) {
@@ -78,15 +83,15 @@ class ListChainsCommand extends Command
      */
     private function printChain(array $entries, OutputInterface $output): void
     {
-        usort($entries, fn($a, $b) => $b['priority'] <=> $a['priority']);
+        usort($entries, fn ($a, $b) => $b['priority'] <=> $a['priority']);
 
         $table = new Table($output);
         $table
             ->setHeaders(['Priority', 'Handler'])
-            ->setColumnStyle(0, (new TableStyle())->setPadType(STR_PAD_LEFT));
+            ->setColumnStyle(0, (new TableStyle())->setPadType(\STR_PAD_LEFT));
 
         foreach ($entries as $entry) {
-            $table->addRow([$entry['priority'], get_class($entry['handler'])]);
+            $table->addRow([$entry['priority'], \get_class($entry['handler'])]);
         }
 
         $table->render();
