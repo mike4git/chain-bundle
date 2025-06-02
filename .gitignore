@@ -1,5 +1,6 @@
 # Composer
 /composer.lock
+/var/
 /vendor/
 
 # PHP-CS-Fixer
