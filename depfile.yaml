@@ -1,0 +1,36 @@
+deptrac:
+  paths:
+    - ./src/
+    - ./tests/
+
+  layers:
+    - name: Handler
+      collectors:
+        - type: bool
+          must:
+            - type: implements
+              value: 'Mike4Git\ChainBundle\Handler\ChainHandlerInterface'
+
+    - name: Context
+      collectors:
+        - type: bool
+          must:
+            - type: implements
+              value: 'Mike4Git\ChainBundle\Handler\Context\ChainHandlerContext'
+
+    - name: Executor
+      collectors:
+        - type: implements
+          value: 'Mike4Git\ChainBundle\Executor\ChainExecutor'
+
+  ruleset:
+    Executor:
+      - Handler
+    Handler:
+      - Context
+
+  formatters:
+    graphviz:
+      hidden_layers: []
+      groups: []
+      point_to_groups: true

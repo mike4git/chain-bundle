@@ -9,7 +9,11 @@ use Mike4Git\ChainBundle\Handler\Context\ChainHandlerContext;
 /**
  * @implements ChainHandlerInterface<FizzBuzzContext>
  */
-#[AsChainHandler(chain: 'fizzbuzz', priority: 200)]
+#[AsChainHandler(
+    chain: 'fizzbuzz',
+    priority: 200,
+    description: 'appends \'FizzBuzz\' to the result in case of number divisible by 15'
+)]
 class FizzBuzzHandler implements ChainHandlerInterface
 {
     public function supports(ChainHandlerContext $context): bool
