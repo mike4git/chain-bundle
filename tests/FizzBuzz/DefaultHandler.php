@@ -9,7 +9,11 @@ use Mike4Git\ChainBundle\Handler\Context\ChainHandlerContext;
 /**
  * @implements ChainHandlerInterface<FizzBuzzContext>
  */
-#[AsChainHandler(chain: 'fizzbuzz', priority: 0)]
+#[AsChainHandler(
+    chain: 'fizzbuzz',
+    priority: 0,
+    description: 'appends the number to the result with leading empty space',
+)]
 class DefaultHandler implements ChainHandlerInterface
 {
     public function supports(ChainHandlerContext $context): bool
@@ -22,10 +26,5 @@ class DefaultHandler implements ChainHandlerInterface
         $context->result .= ' ' . (string) $context->number;
 
         return $context;
-    }
-
-    public function describeTask(): string
-    {
-        return 'appends the number to the result with leading empty space';
     }
 }

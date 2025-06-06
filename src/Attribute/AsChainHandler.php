@@ -8,6 +8,7 @@ class AsChainHandler
     public function __construct(
         public string $chain,
         public int $priority = 0,
+        public string $description = '',
     ) {
     }
 }

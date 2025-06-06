@@ -9,7 +9,11 @@ use Mike4Git\ChainBundle\Handler\Context\ChainHandlerContext;
 /**
  * @implements ChainHandlerInterface<FizzBuzzContext>
  */
-#[AsChainHandler(chain: 'fizzbuzz', priority: 100)]
+#[AsChainHandler(
+    chain: 'fizzbuzz',
+    priority: 100,
+    description: 'appends \'Buzz\' to the result in case of number divisible by 5',
+)]
 class BuzzHandler implements ChainHandlerInterface
 {
     public function supports(ChainHandlerContext $context): bool
@@ -22,10 +26,5 @@ class BuzzHandler implements ChainHandlerInterface
         $context->result .= ' Buzz';
 
         return $context;
-    }
-
-    public function describeTask(): string
-    {
-        return 'appends \'Buzz\' to the result in case of number divisible by 5';
     }
 }

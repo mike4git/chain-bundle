@@ -23,12 +23,13 @@ class ChainHandlerRegistry
         ChainHandlerInterface $handler,
         int $priority,
         ?string $serviceId = null,
+        ?string $description = null,
     ): void {
         $this->handlers[$chainName][] = [
             'priority' => $priority,
             'handler' => $handler,
             'id' => $serviceId,
-            'description' => $handler->describeTask(),
+            'description' => $description,
         ];
     }
 

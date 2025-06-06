@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Mike4Git\ChainBundle\Tests;
 
@@ -26,6 +26,5 @@ class ChainBundleTest extends BaseKernelTestCase
             ->shouldBeCalled();
 
         (new ChainBundle())->build($containerBuilder->reveal());
-
     }
 }
