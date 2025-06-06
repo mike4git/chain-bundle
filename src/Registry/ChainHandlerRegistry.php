@@ -18,11 +18,16 @@ class ChainHandlerRegistry
     /**
      * @param ChainHandlerInterface<TContext> $handler
      */
-    public function addHandler(string $chainName, ChainHandlerInterface $handler, int $priority): void
-    {
+    public function addHandler(
+        string $chainName,
+        ChainHandlerInterface $handler,
+        int $priority,
+        ?string $serviceId = null,
+    ): void {
         $this->handlers[$chainName][] = [
             'priority' => $priority,
             'handler' => $handler,
+            'id' => $serviceId,
         ];
     }
 

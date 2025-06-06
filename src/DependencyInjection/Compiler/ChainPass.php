@@ -26,7 +26,15 @@ class ChainPass implements CompilerPassInterface
                     throw new \InvalidArgumentException("Handler $id must define a 'chain' attribute.");
                 }
 
-                $registryDefinition->addMethodCall('addHandler', [$chain, new Reference($id), $priority]);
+                $registryDefinition->addMethodCall(
+                    'addHandler',
+                    [
+                        $chain,
+                        new Reference($id),
+                        $priority,
+                        $id,
+                    ]
+                );
             }
         }
     }
