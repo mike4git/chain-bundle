@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Tester\CommandTester;
 
-class ListChainsCommandTestCase extends BaseKernelTestCase
+class ListChainsCommandTest extends BaseKernelTestCase
 {
     public function testListChainsCommandOutputsRegisteredChains(): void
     {
