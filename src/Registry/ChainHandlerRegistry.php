@@ -28,6 +28,7 @@ class ChainHandlerRegistry
             'priority' => $priority,
             'handler' => $handler,
             'id' => $serviceId,
+            'description' => $handler->describeTask(),
         ];
     }
 

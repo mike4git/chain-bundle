@@ -30,4 +30,9 @@ class SampleHandler implements ChainHandlerInterface
 
         return $context;
     }
+
+    public function describeTask(): string
+    {
+        return 'turns string into uppercase STRING';
+    }
 }

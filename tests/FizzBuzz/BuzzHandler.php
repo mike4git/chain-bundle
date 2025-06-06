@@ -23,4 +23,9 @@ class BuzzHandler implements ChainHandlerInterface
 
         return $context;
     }
+
+    public function describeTask(): string
+    {
+        return 'appends \'Buzz\' to the result in case of number divisible by 5';
+    }
 }

@@ -17,4 +17,6 @@ interface ChainHandlerInterface
      * @return TContext
      */
     public function handle(ChainHandlerContext $context): ChainHandlerContext;
+
+    public function describeTask(): string;
 }

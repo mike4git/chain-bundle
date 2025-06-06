@@ -23,4 +23,9 @@ class DefaultHandler implements ChainHandlerInterface
 
         return $context;
     }
+
+    public function describeTask(): string
+    {
+        return 'appends the number to the result with leading empty space';
+    }
 }

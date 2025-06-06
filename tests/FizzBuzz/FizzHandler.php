@@ -23,4 +23,9 @@ class FizzHandler implements ChainHandlerInterface
 
         return $context;
     }
+
+    public function describeTask(): string
+    {
+        return 'appends \'Fizz\' to the result in case of number divisible by 3';
+    }
 }

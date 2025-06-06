@@ -23,4 +23,9 @@ class FizzBuzzHandler implements ChainHandlerInterface
 
         return $context;
     }
+
+    public function describeTask(): string
+    {
+        return 'appends \'FizzBuzz\' to the result in case of number divisible by 15';
+    }
 }

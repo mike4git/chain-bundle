@@ -79,7 +79,7 @@ class ListChainsCommand extends Command
     }
 
     /**
-     * @param array<int, array{handler: object, id: string, priority: int}> $entries
+     * @param array<int, array{handler: object, id: string, description: string, priority: int}> $entries
      */
     private function printChain(array $entries, OutputInterface $output): void
     {
@@ -87,11 +87,11 @@ class ListChainsCommand extends Command
 
         $table = new Table($output);
         $table
-            ->setHeaders(['Priority', 'Service ID', 'Handler'])
+            ->setHeaders(['Priority', 'Service ID', 'Handler', 'Task Description'])
             ->setColumnStyle(0, (new TableStyle())->setPadType(\STR_PAD_LEFT));
 
         foreach ($entries as $entry) {
-            $table->addRow([$entry['priority'], $entry['id'], \get_class($entry['handler'])]);
+            $table->addRow([$entry['priority'], $entry['id'], \get_class($entry['handler']), $entry['description']]);
         }
 
         $table->render();
