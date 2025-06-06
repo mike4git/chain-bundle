@@ -47,7 +47,7 @@ class ListChainsCommand extends Command
         $reflection = new \ReflectionClass($this->registry);
         $property = $reflection->getProperty('handlers');
         $property->setAccessible(true);
-        /** @var array<string, array<int, array{handler: object, id: string, priority: int}>> $handlers */
+        /** @var array<string, array<int, array{handler: object, id: string, description: string, priority: int}>> $handlers */
         $handlers = $property->getValue($this->registry);
 
         if (empty($handlers)) {
