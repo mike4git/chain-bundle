@@ -21,6 +21,7 @@ class ChainPass implements CompilerPassInterface
             foreach ($tags as $attributes) {
                 $chain = $attributes['chain'] ?? null;
                 $priority = $attributes['priority'] ?? 0;
+                $description = $attributes['description'] ?? null;
 
                 if (!$chain) {
                     throw new \InvalidArgumentException("Handler $id must define a 'chain' attribute.");
@@ -33,6 +34,7 @@ class ChainPass implements CompilerPassInterface
                         new Reference($id),
                         $priority,
                         $id,
+                        $description,
                     ]
                 );
             }

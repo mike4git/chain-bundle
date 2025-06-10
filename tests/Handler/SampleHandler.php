@@ -10,7 +10,11 @@ use Mike4Git\ChainBundle\Tests\Handler\Context\SampleContext;
 /**
  * @extends ChainHandlerInterface<SampleContext>
  */
-#[AsChainHandler(chain: 'sample', priority: 100)]
+#[AsChainHandler(
+    chain: 'sample',
+    priority: 100,
+    description: 'turns string into uppercase STRING',
+)]
 class SampleHandler implements ChainHandlerInterface
 {
     /**
